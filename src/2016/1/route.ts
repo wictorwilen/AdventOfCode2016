@@ -64,6 +64,7 @@ class Route {
                 dir -= 90;
             }
             dir = dir % 360;
+            
             if (dir == -90) {
                 dir = 270;
             }
