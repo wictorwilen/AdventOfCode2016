@@ -7,6 +7,8 @@ var browserSync = require('browser-sync')
 var nodemon = require('gulp-nodemon');
 var argv = require('yargs').argv;
 var fsharp = require('gulp-fsharp');
+var del = require('del'); // rm -rf
+
 
 var typeScriptFiles = ["./src/**/*.ts"]
 var ts = tsc.createProject('tsconfig.json')
@@ -76,3 +78,7 @@ gulp.task("run", ['ts:compile', "start"], function () {
     gulp.watch('./src/**/*.ts', ['ts:compile']);
 });
 
+
+gulp.task('nuke', function () {
+    return del(['dist']);
+});
