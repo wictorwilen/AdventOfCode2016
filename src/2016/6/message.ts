@@ -21,7 +21,7 @@ class Message {
             var input = sequence.toString().trim();
             if (input.length == 0) {
                 var message = '';
-                var message2 = '':
+                var message2 = '';
                 for (var j = 0; j < buckets.length; j++) {
                     buckets[j].sort((a, b) => { return b.count - a.count });
                     message += buckets[j][0].character; 

@@ -1,7 +1,13 @@
 # Run
 
+## TypeScript
+
     gulp ts:compile
     node dist\2016\6\message.js
+
+## F#
+
+    fsi.exe src\2016\6\messages.fsx
 
 # Input
 

@@ -5,12 +5,16 @@ var sourcemaps = require('gulp-sourcemaps')
 var tsc = require('gulp-typescript')
 var browserSync = require('browser-sync')
 var nodemon = require('gulp-nodemon');
-var argv = require('yargs').argv
+var argv = require('yargs').argv;
+var fsharp = require('gulp-fsharp');
 
 var typeScriptFiles = ["./src/**/*.ts"]
 var ts = tsc.createProject('tsconfig.json')
 
 
+gulp.task('fs:compile', function () {
+    return gulp.src('./src/**/*.fsx').pipe(fsharp()).pipe(gulp.dest('./dist'));
+});
 
 gulp.task('ts:compile', function () {
     var result = gulp.src(typeScriptFiles)
@@ -18,7 +22,7 @@ gulp.task('ts:compile', function () {
         .pipe(ts({}));
 
     return result.js
-        .pipe(sourcemaps.write())
+        .pipe(sourcemaps.write('.', {sourceRoot: '../src'}))
         .pipe(gulp.dest("./dist"));
 });
 
